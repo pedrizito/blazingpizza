@@ -1,5 +1,6 @@
 ﻿@page "/"
-@inject SpecialsController;
+@using BlazingPizza.Data
+@inject PizzaStoreContext DbContext
 
 <PageTitle>Home</PageTitle>
 
@@ -25,9 +26,9 @@
 @code {
     List<PizzaSpecial> specials = new();
 
-      protected override async Task OnInitializedAsync()
-{
-    specials = await HttpClient.GetFromJsonAsync<List<PizzaSpecial>>(NavigationManager.BaseUri + "specials");
-}
+    protected override async Task OnInitializedAsync()
+    {
+        specials = await DbContext.Specials.ToListAsync();
+    }
     
-}    using BlazingPizza.Controllers;
+}    
