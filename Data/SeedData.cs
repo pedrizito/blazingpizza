@@ -1,3 +1,5 @@
+using static System.Net.WebRequestMethods;
+
 namespace BlazingPizza.Data;
 
 public static class SeedData
